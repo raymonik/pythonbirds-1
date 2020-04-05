@@ -1,0 +1,39 @@
+Index: OO/Pessoa.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- OO/Pessoa.py	(revision 654adb697fa3d514d24c5429a5ee9997c614ebb3)
++++ OO/Pessoa.py	(date 1586113267245)
+@@ -1,18 +1,21 @@
+ class Pessoa:
+-    def __init__(self, nome=None, idade=35):
++    def __init__(self, *filhos, nome=None, idade=35):
+         self.idade = idade
+         self.nome = nome
++        self.filhos = list(filhos)
++
+     def cumprimentar(self):
+         return f'Olá{id(self)}'
+ 
++
+ if __name__ == '__main__':
+-    p = Pessoa('Luciano')
+-
+-    print(Pessoa.cumprimentar(p))
+-    print(id(p))
+-    print(p.cumprimentar())
+-    print(p.nome)
+-    p.nome = 'Renzo'
+-    print(p.nome)
+-    print(idade)
++    renzo = Pessoa(nome='renzo')
++    Luciano = Pessoa(renzo, nome='Luciano')
++    print(Pessoa.cumprimentar(Luciano))
++    print(id(Luciano))
++    print(Luciano.cumprimentar())
++    print(Luciano.nome)
++    print(Luciano.idade)
++    for filho in Luciano.filhos:
++        print(Luciano.filhos)
+ 
